@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f6f9;
+      color: #2d3436;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .game-container {
+      background: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #0984e3;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #b2bec3;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      background-color: #0984e3;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #74b9ff;
+    }
+    #feedback {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    #restartGame {
+      background-color: #d63031;
+    }
+    #restartGame:hover {
+      background-color: #e17055;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guessInput" placeholder="Enter your guess">
+    <button id="submitGuess">Submit</button>
+    <div id="feedback"></div>
+    <button id="restartGame" style="display: none;">Restart Game</button>
+  </div>
+  <script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attemptsLeft = 10;
+    const feedback = document.getElementById("feedback");
+    const guessInput = document.getElementById("guessInput");
+    const submitGuess = document.getElementById("submitGuess");
+    const restartGame = document.getElementById("restartGame");
+
+    submitGuess.addEventListener("click", () => {
+      const userGuess = Number(guessInput.value);
+      if (!userGuess || userGuess < 1 || userGuess > 100) {
+        feedback.textContent = "Enter a number between 1 and 100.";
+        feedback.style.color = "#d63031";
+        return;
+      }
+      attemptsLeft--;
+      if (userGuess === randomNumber) {
+        feedback.textContent = "🎉 Correct! You win!";
+        feedback.style.color = "#00b894";
+        endGame();
+      } else if (attemptsLeft === 0) {
+        feedback.textContent = `😢 Game Over! The number was ${randomNumber}.`;
+        feedback.style.color = "#d63031";
+        endGame();
+      } else if (userGuess < randomNumber) {
+        feedback.textContent = `Too low! ${attemptsLeft} attempts left.`;
+        feedback.style.color = "#fdcb6e";
+      } else {
+        feedback.textContent = `Too high! ${attemptsLeft} attempts left.`;
+        feedback.style.color = "#fdcb6e";
+      }
+      guessInput.value = "";
+    });
+
+    restartGame.addEventListener("click", () => {
+      randomNumber = Math.floor(Math.random() * 100) + 1;
+      attemptsLeft = 10;
+      feedback.textContent = "";
+      guessInput.value = "";
+      restartGame.style.display = "none";
+      submitGuess.style.display = "inline";
+      guessInput.style.display = "inline";
+    });
+
+    function endGame() {
+      restartGame.style.display = "inline";
+      submitGuess.style.display = "none";
+      guessInput.style.display = "none";
+    }
+  </script>
+</body>
+</html>
