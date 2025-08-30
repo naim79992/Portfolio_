@@ -1,450 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehedi Hasan Naim - Portfolio</title>
-    <style>
-        body {
-            font-family: 'Arial', 'Helvetica', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: lightgray; /* Standard color */
-            color: black;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mehedi Hasan Naim — Portfolio</title>
+  <meta name="description" content="Competitive Programmer & Software Developer — Portfolio of Mehedi Hasan Naim with projects, achievements, research, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;           /* page background */
+      --surface:#0f1530;      /* cards/nav background */
+      --muted:#9aa4b2;        /* secondary text */
+      --text:#e6e9ef;         /* primary text */
+      --primary:#6366f1;      /* indigo */
+      --primary-2:#22d3ee;    /* cyan accent */
+      --accent:#fbbf24;       /* amber accent */
+      --ring: rgba(99,102,241,.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(2,6,23,.35);
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,sans-serif;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(34,211,238,.12), transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, rgba(99,102,241,.10), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-        /* Header */
-        #header {
-            background-color: rgb(1, 1, 18); /* Standard color */
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-/* Box model for lists */
-.list-item {
-    margin: 10px auto;
-    padding: 15px;
-    border: 2px solid #ccc; /* Gray border */
-    border-radius: 8px;
-    background-color: #f9f9f9; /* Light background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    text-align: left;
-    max-width: 800px; /* Center the boxes with a width limit */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    /* Layout */
+    .container{max-width:var(--maxw);margin-inline:auto;padding:0 20px}
+    section{padding:80px 0}
+    .section-title{font-size:clamp(26px,2.5vw,36px);font-weight:700;margin:0 0 24px;color:#fff}
+    .section-sub{color:var(--muted);margin-top:-6px;margin-bottom:28px}
 
-/* Hover effect for boxes */
-.list-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Slightly bigger shadow */
-}
+    /* Header */
+    .nav{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
+      background: rgba(15,21,48,.75); border-bottom: 1px solid rgba(148,163,184,.12);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-2)); box-shadow:0 0 0 4px rgba(99,102,241,.15)}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{color:#e7eaf6;opacity:.85;font-weight:500}
+    .menu a:hover{color:#fff}
+    .cta{padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+         color:#0b1020;font-weight:700; box-shadow: var(--shadow); border: none}
 
-/* Make text within boxes more readable */
-.list-item b {
-    font-size: 20px;
-    color: #333; /* Darker text color */
-}
+    /* Mobile menu */
+    .hamb{display:none;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:8px 10px;background:transparent;color:#e7eaf6}
+    @media (max-width:820px){
+      .menu{display:none}
+      .hamb{display:inline-flex}
+      .mobile{display:none;flex-direction:column;gap:10px;padding:12px 0}
+      .mobile a{padding:12px;border-radius:12px;background:rgba(99,102,241,.08)}
+      .mobile.show{display:flex}
+    }
 
-        #header h1 {
-            font-size: 36px;
-            margin: 0;
-        }
+    /* Hero */
+    #home{padding:110px 0 80px; position:relative; overflow:hidden}
+    .hero{display:grid;grid-template-columns: 1.2fr .8fr;gap:28px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(34,211,238,.12); color:#c3f0ff;
+           border:1px solid rgba(34,211,238,.25); font-weight:600}
+    .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.15;margin:14px 0 12px}
+    .hero p{color:#cbd5e1;margin:0 0 22px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 18px;border-radius:12px;border:1px solid rgba(148,163,184,.2);background:rgba(15,21,48,.6);color:#e7eaf6}
+    .btn.primary{border:none;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#0b1020;font-weight:700}
+    .hero-card{background:linear-gradient(180deg,rgba(99,102,241,.12),rgba(99,102,241,.05)); border:1px solid rgba(148,163,184,.18);
+               border-radius:var(--radius); padding:18px; box-shadow: var(--shadow)}
+     .hero-card img {
+      width: 100%;
+      height: auto;         /* aspect ratio ঠিক রাখবে */
+      object-fit: cover;    /* বক্স ভরবে */
+      border-radius: 5px;  /* নরম কোণা */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
 
-        #header nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            font-weight: normal;
-            transition: color 0.3s;
-        }
+    /* About */
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center}
+    .avatar{width:200px;height:200px;border-radius:50%;overflow:hidden;border:2px solid rgba(148,163,184,.25);
+            box-shadow:0 12px 40px rgba(0,0,0,.35)}
+    .about p{color:#d7dce7}
+    .socials{display:flex;gap:12px;margin-top:10px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(148,163,184,.2)}
+    @media (max-width:900px){.about{grid-template-columns:1fr;justify-items:center;text-align:center}}
 
-        #header nav a:hover {
-            color: rgb(225, 192, 6); /* Standard color */
-        }
+    /* Grids */
+    .grid{display:grid;gap:18px}
+    .grid.cards{grid-template-columns: repeat(3, 1fr)}
+    @media (max-width:1050px){.grid.cards{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:680px){.grid.cards{grid-template-columns:1fr}}
 
-        /* Home Section */
-        #home {
-            background-color: rgb(220, 233, 237); /* Standard color */
-            color: rgb(103, 67, 221);
-            padding: 20px 10px;
-            text-align: center;
-        }
+    .card{background: linear-gradient(180deg, rgba(15,21,48,.8), rgba(15,21,48,.6));
+          border:1px solid rgba(148,163,184,.18); border-radius: var(--radius); padding:18px; box-shadow: var(--shadow);
+          transition: transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform: translateY(-6px)}
+    .card h3{margin:8px 0 6px; font-size:18px}
+    .card p{color:#cbd5e1; font-size:15px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(99,102,241,.18); font-size:12px;color:#cbd5ff;border:1px solid rgba(99,102,241,.3)}
+    .card-actions{display:flex;gap:10px;margin-top:10px}
 
-        #home h3 {
-            font-size: 36px;
-            margin: 0;
-        }
+    /* Timeline (Achievements/Experience) */
+    .timeline{position:relative;padding-left:24px}
+    .timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--primary),transparent)}
+    .t-item{position:relative;margin:0 0 14px;padding:14px 16px;border-radius:14px;background:rgba(99,102,241,.08); border:1px solid rgba(148,163,184,.18)}
+    .t-item::before{content:"";position:absolute;left:-2px;top:18px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-2)); box-shadow:0 0 0 4px rgba(99,102,241,.15)}
 
-        #home h2 {
-            font-size: 24px;
-            margin: 5px 0;
-            color: rgb(34, 18, 108); /* Standard color */
-        }
+    /* Gallery */
+    .gallery{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    .gallery img{border-radius:14px;aspect-ratio: 4/3; object-fit:cover; transition:transform .25s ease}
+    .gallery img:hover{transform:scale(1.02)}
+    @media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.gallery{grid-template-columns:1fr}}
 
-        /* About Section */
-        #about {
-            background-color: rgb(251, 251, 251); /* Standard color */
-            color: rgb(16, 1, 1);
-            padding: 10px 10px;
-            text-align: center;
-            
-        }
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+    .form{background:linear-gradient(180deg,rgba(99,102,241,.12),rgba(99,102,241,.05));border:1px solid rgba(148,163,184,.18);
+           padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    .field input,.field textarea{background:#0b1020;border:1px solid rgba(148,163,184,.25);color:#e7eaf6;border-radius:12px;padding:12px 14px}
+    .field input:focus,.field textarea:focus{outline:none; box-shadow:0 0 0 4px var(--ring)}
+    .form button{margin-top:6px}
+    @media (max-width:900px){.contact{grid-template-columns:1fr}}
 
-        #about h1 {
-            font-size: 33px;
-            margin-bottom: 20px;
-            color: rgb(89, 76, 4); /* Standard color */
-        }
+    /* Footer */
+    footer{padding:28px 0;border-top:1px solid rgba(148,163,184,.12); color:#cdd6e0}
 
-        #about img {
-            width: 250px;
-            border-radius: 50%;
-            margin: 20px 0;
-        }
-
-        .visit-button {
-            background-color: rgb(81, 66, 212); /* Standard color */
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 18px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-
-        .visit-button:hover {
-            background-color: rgb(4, 0, 255); /* Standard color */
-        }
-
-        /* Projects Section */
-        #projects {
-            padding: 20px 20px;
-            text-align: center;
-            background-color: rgb(242, 232, 232); /* Standard color */
-        }
-
-        #projects h1 {
-            font-size: 36px;
-            color: rgb(83, 56, 207); /* Standard color */
-            margin-bottom: 40px;
-        }
-
-        #projects ul {
-            list-style: none;
-            padding: 0;
-            font-size: 18px;
-            color: black;
-        }
-
-        #projects li {
-            margin-bottom: 10px;
-        }
-
-        /* Achievements Section */
-        #achievements {
-            background-color: rgb(230, 229, 239); /* Standard color */
-            padding: 20px 20px;
-            text-align: center;
-            color: rgb(4, 0, 0);
-        }
-
-        #achievements h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: rgb(41, 34, 134); /* Standard color */
-        }
-
-        #achievements ul {
-            list-style: none;
-            padding: 0;
-            font-size: 18px;
-            color: rgb(20, 1, 1);
-        }
-
-        #achievements li {
-            margin-bottom: 10px;
-        }
-
-        /* Experience Section */
-        #experiences {
-            padding: 20px 20px;
-            text-align: center;
-            background-color: rgb(239, 242, 235); /* Standard color */
-            color: rgb(95, 31, 232);
-        }
-
-        #experiences h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        #experiences ul {
-            list-style: none;
-            padding: 0;
-            font-size: 18px;
-            color: rgb(1, 0, 5);
-        }
-
-        #experiences li {
-            margin-bottom: 10px;
-        }
-
-        /* Research Work Section */
-        #research {
-            background-color: rgb(212, 230, 221); /* Standard color */
-            color: rgb(62, 15, 15);
-            padding: 10px 10px;
-            text-align: center;
-        }
-
-        #research h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: rgb(96, 50, 221); /* Standard color */
-        }
-
-        #research ul {
-            list-style: none;
-            padding: 0;
-            font-size: 18px;
-            color: rgb(16, 0, 0);
-        }
-
-        #research li {
-            margin-bottom: 10px;
-        }
-
-        /* Contact Section */
-        #contact {
-            padding: 20px 20px;
-            text-align: center;
-            background-color: rgb(177, 196, 204); /* Standard color */
-            color: rgb(78, 43, 203);
-        }
-
-        #contact h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #eee6e6;
-            border-radius: 5px;
-            font-size: 16px;
-            color: rgb(205, 170, 170);
-        }
-
-        .contact-form button {
-            background-color: rgb(43, 0, 255); /* Standard color */
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-
-        .contact-form button:hover {
-            background-color: rgb(18, 12, 94); /* Standard color */
-        }
-
-        /* Footer */
-        #footer {
-            background-color: rgb(1, 1, 18); /* Standard color */
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        #footer a {
-            color: white;
-            text-decoration: none;
-            padding: 0 15px;
-            font-size: 18px;
-        }
-
-        #footer a:hover {
-            color: gold; /* Standard color */
-        }
-
-         /* Image Grid */
-         .image-row {
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .image-row img {
-            width: 32%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .image-row img:hover {
-            transform: scale(1.05);
-        }
-
-        .image-ro img {
-            width: 49%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .image-ro img:hover {
-            transform: scale(1.05);
-        }
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            #header h1 {
-                font-size: 36px;
-            }
-
-            #home h3 {
-                font-size: 36px;
-            }
-
-            #home h2 {
-                font-size: 28px;
-            }
-
-            #about img {
-                width: 200px;
-            }
-
-            #projects h1,
-            #achievements h1,
-            #contact h1 {
-                font-size: 36px;
-            }
-            .contact-form {
-                width: 90%;
-            }
-        }
-    </style>
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+    .mt-8{margin-top:32px}
+    .spacer{height:20px}
+  </style>
 </head>
-
 <body>
-
-    <!-- Header -->
-    <div id="header">
-        <!-- <h1>Mehedi Hasan Naim</h1> -->
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#contact">Contact</a>
-        </nav>
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot"></span> <span>Mehedi Hasan Naim</span></div>
+      <nav class="menu" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#experiences">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="Mehedi Hasan Naim_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      </nav>
+      <button class="hamb" aria-label="Toggle menu" onclick="document.querySelector('.mobile').classList.toggle('show')">☰</button>
     </div>
-
-    <!-- Home Section -->
-    <section id="home">
-        <h3>Welcome to My Portfolio Website</h3>
-        <p>Competitive Programmer | Software Developer</p>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h1>About Me</h1>
-        <img src="photo_6303316097377615850_y.jpg" alt="Mehedi Hasan Naim">
-        <p class="list-item">I am a passionate problem-solver, having a strong background in competitive programming, I excel in programming languages, data structures and algorithms. I have experience in team collaboration and participation in programming contests has sharpened my ability to handle pressure. I am eager to explore myself in the field of software Engineering and contributing to innovative projects.</p>
-        <a href="https://drive.google.com/file/d/1MPihtaYdIxHwFEyvSsSRZUEXjgtq0Aum/view?usp=sharing" target="_blank" class="visit-button">CV</a>
-    </section>
-
-   
-    <!-- Achievements Section -->
-    <section id="achievements">
-        <h1>Achievements</h1>
-        <ul>        
-            <li class="list-item"><b>Take off Programming Contest Fall 2021: Champion</b></li>
-            <li class="list-item"><b>Unlock Algorithm Programming Contest Fall 2022: Champion</b></li>
-            <li class="list-item"><b>UAP IUCPC: 20th</b></li>
-            <li class="list-item"><b>IUPC CUET: 72th</b></li>
-            <li class="list-item"><b>ICPC Dhaka regional contest 2024: Top 64%</b></li>
-            <li class="list-item"><b>ICPC Dhaka regional preliminary contest 2022: 136th</b></li>
-            <li class="list-item"><b>ICPC Dhaka regional preliminary contest 2023: 170th</b></li>
-            <li class="list-item"><b>ICPC Dhaka regional preliminary contest 2024: 212th</b></li>
-            <li class="list-item"><b>DRMC International tech carnival: 137th</b></li>
-            <li class="list-item"><b>2100+ Algorithmic Problems Solved</b></li>
-            <li class="list-item"><b>CGPA: 3.84</b></li>
-        </ul>
-    </section>
-    
-    <section id="experiences">
-        <h1>Experiences</h1>
-        <ul>
-            <li class="list-item">Associate Judging Director: Unlock The Algorithm (1000+ participants)</li>
-            <li class="list-item">Problem Setter & Judge: Takeoff Programming Contest & Unlock the Algorithm Programming Contest (2022-Now)</li>
-            <li class="list-item">ACM Task Force Executive</li>
-            <li class="list-item">Prompt Battle 2024: Problem Setter</li>
-        </ul>
-    </section>
-    <!-- Projects -->
-
-    <section id="projects">
-        <h1>Projects</h1>
-        <ul>
-            <li class="list-item">QuizWhiz[HTML,CSS,Thymleaf, Java, Spring Boot, Spring Data JPA]</li>
-            <li class="list-item">DevSpare[HTML,CSS,JS,PHP]</li>
-            <li class="list-item">FoodMonkey[HTML,CSS,JS]</li>
-            <li class="list-item">Weather App[Flutter]</li>
-            <li class="list-item">Quiz app[Flutter]</li>
-            <li class="list-item">Bank Management System[Java]</li>
-            <li class="list-item">Squid Game[C++]</li>]
-        </ul>
-    </section>
-    
-<!-- Research -->
-    <section id="research">
-        <h1>Research Work</h1>
-        <ul>
-            <li class="list-item">Vehicle Detection through CNN</li>
-            <li class="list-item">Analysing the effect of caffine on brain network using spetio temporal graph neural network.</li>
-            <li class="list-item">A Hybride approch on Bangla Q&A chatbot using LLMs</li>
-        </ul>
-    </section>
-    
-    <!-- Image Rows -->
-    <div class="image-row">
-        <img src="0.jpg" alt="Image 1">
-        <img src="00.jpg" alt="Image 2">
-        <img src="000.jpg" alt="Image 3">
-    </div>
-    <div class="image-row">
-        <img src="0000.jpg" alt="Image 1">
-        <img src="3.JPG" alt="Image 2">
-        <img src="333.jpeg" alt="Image 3">
-    </div>
-    <!-- <div class="image-ro"> 
-        <img src="e.png" alt="Image 2">
-        <img src="11.jpg" alt="Image 1">
-
+    <!-- <div class="container mobile">
+      <a href="#home" onclick="this.closest('.mobile').classList.remove('show')">Home</a>
+      <a href="#about" onclick="this.closest('.mobile').classList.remove('show')">About</a>
+      <a href="#projects" onclick="this.closest('.mobile').classList.remove('show')">Projects</a>
+      <a href="#achievements" onclick="this.closest('.mobile').classList.remove('show')">Achievements</a>
+      <a href="#experiences" onclick="this.closest('.mobile').classList.remove('show')">Experience</a>
+      <a href="#research" onclick="this.closest('.mobile').classList.remove('show')">Research</a>
+      <a href="#contact" onclick="this.closest('.mobile').classList.remove('show')">Contact</a>
+      <a class="cta" href="https://drive.google.com/file/d/1MPihtaYdIxHwFEyvSsSRZUEXjgtq0Aum/view?usp=sharing" target="_blank" rel="noopener">Download CV</a>
     </div> -->
-    <br>
-    <!-- Footer -->
-    <div id="footer">
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="https://www.linkedin.com/in/md-mehedi-hasan-naim-a592671a7/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/naim79992" target="_blank">GitHub</a>
-        </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home">
+    <div class="container hero">
+      <div>
+        <span class="badge">Competitive Programmer • Software Developer</span>
+        <h1>Aspiring Software Engineer, eager to solve problems and build clean, efficient software.</h1>
+        <p>Strong background in Data Structures & Algorithms with hands‑on project work in Java/Spring Boot, Flutter, and web development. Passionate about building products that are fast, reliable, and delightful to use.</p>
+        <div class="actions">
+          <!-- <a class="btn primary" href="#contact">Hire Me</a> -->
+          <a class="btn" href="https://github.com/naim79992" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/md-mehedi-hasan-naim-a592671a7/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="Naim_v2.png" alt="Portrait of Mehedi Hasan Naim" />
+      </div>
     </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about">
+      <div class="avatar"><img src="Naim_v3.png" alt="Mehedi Hasan Naim" /></div>
+      <div>
+        <h2 class="section-title">About Me</h2>
+        <p>I am a passionate problem solver. With a strong foundation in competitive programming, I excel at writing efficient, readable code and designing algorithms. Team collaboration and contest experience have sharpened my ability to deliver under pressure. I’m eager to grow as a Software Engineer and contribute to impactful products.</p>
+        <div class="socials">
+          <a class="chip" href="mailto:mhnaim.cse@example.com" aria-label="Email">✉️ Email</a>
+          <a class="chip" href="https://github.com/naim79992" target="_blank" rel="noopener" aria-label="GitHub">🐙 GitHub</a>
+          <a class="chip" href="https://codeforces.com/profile/mh_naim_" target="_blank" rel="noopener" aria-label="Codeforces">⚡ Codeforces</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">A selection of work across web, backend, and apps.</p>
+      <div class="grid cards">
+       
+          <article class="card">
+          <div class="pill">Java 21 • Spring Boot 3 • Gemeni API • Bootstrap • JavaScript</div>
+          <h3> IntelliStudy</h3>
+          <p>Create and manage quizzes with random question delivery, scoring, and a simple admin flow.</p>
+          <div class="card-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn" href="https://github.com/naim79992/QuizWhiz" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pill">Java 21 • Spring Boot 3 • Spring Data JPA • Mysql • Bootstrap</div>
+          <h3>QuizWhiz</h3>
+          <p>Create and manage quizzes with random question delivery, scoring, and a simple admin flow.</p>
+          <div class="card-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn" href="https://github.com/naim79992/QuizWhiz" target="_blank" rel="noopener">Source</a>
+          </div>
+          </article>
+        <article class="card">
+          <div class="pill">HTML • CSS • JS • PHP</div>
+          <h3>DevSpare</h3>
+          <p>Developer utilities and snippets hub with simple backend for storing/retrieving items.</p>
+          <div class="card-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pill">HTML • CSS • JS</div>
+          <h3>FoodMonkey</h3>
+          <p>Minimal food ordering front-end with category browsing and cart UI.</p>
+          <div class="card-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pill">Flutter</div>
+          <h3>Weather App</h3>
+          <p>City-based forecast viewer with clean UI components and API integration.</p>
+          <div class="card-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pill">Flutter</div>
+          <h3>Quiz App</h3>
+          <p>Randomized quizzes with scoring and result review, optimized for mobile.</p>
+          <div class="card-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pill">Java</div>
+          <h3>Bank Management System</h3>
+          <p>Core banking features like accounts, transactions, and basic reporting.</p>
+          <div class="card-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pill">C++</div>
+          <h3>Squid Game</h3>
+          <p>Console/graphics-based mini game implementing state and scoring mechanics.</p>
+          <div class="card-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <div class="container">
+      <h2 class="section-title">Achievements</h2>
+      <div class="timeline">
+        <div class="t-item"><strong>Take off Programming Contest (Fall 2021):</strong> Champion</div>
+        <div class="t-item"><strong>Unlock Algorithm Programming Contest (Fall 2022):</strong> Champion</div>
+        <div class="t-item"><strong>UAP IUCPC:</strong> 20th</div>
+        <div class="t-item"><strong>IUPC CUET:</strong> 72nd</div>
+        <div class="t-item"><strong>ICPC Dhaka Regional Contest 2024:</strong> Top 64%</div>
+        <div class="t-item"><strong>ICPC Dhaka Regional Preliminary 2022:</strong> 136th</div>
+        <div class="t-item"><strong>ICPC Dhaka Regional Preliminary 2023:</strong> 170th</div>
+        <div class="t-item"><strong>ICPC Dhaka Regional Preliminary 2024:</strong> 212th</div>
+        <div class="t-item"><strong>DRMC International Tech Carnival:</strong> 137th</div>
+        <div class="t-item"><strong>Problems Solved:</strong> 2100+ Algorithmic Problems</div>
+        <div class="t-item"><strong>CGPA:</strong> 3.84</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experiences">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="t-item"><strong>Associate Judging Director:</strong> Unlock The Algorithm (1000+ participants)</div>
+        <div class="t-item"><strong>Problem Setter & Judge:</strong> Takeoff Programming Contest & Unlock the Algorithm (2022–Now)</div>
+        <div class="t-item"><strong>ACM Task Force Executive</strong></div>
+        <div class="t-item"><strong>Prompt Battle 2024:</strong> Problem Setter</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section id="research">
+    <div class="container">
+      <h2 class="section-title">Research Work</h2>
+      <div class="grid cards">
+        <article class="card">
+          <div class="pill">CNN • Computer Vision</div>
+          <h3>Vehicle Detection through CNN</h3>
+          <p>Explored convolutional architectures to detect and classify vehicles from road images.</p>
+          <div class="card-actions"><a class="btn" href="#">PDF</a></div>
+        </article>
+        <article class="card">
+          <div class="pill">ST-GNN • fMRI</div>
+          <h3>Effect of Caffeine on Brain Network</h3>
+          <p>Analyzing caffeine’s impact on functional connectivity using spatio‑temporal graph neural networks.</p>
+          <div class="card-actions"><a class="btn" href="#">PDF</a></div>
+        </article>
+        <article class="card">
+          <div class="pill">LLM • RAG</div>
+          <h3>Hybrid Approach to Bangla Q&A Chatbot</h3>
+          <p>Combines LLMs with retrieval to improve accuracy for Bangla question answering.</p>
+          <div class="card-actions"><a class="btn" href="#">PDF</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery">
+        <img src="0.jpg" alt="Gallery image 1">
+        <img src="00.jpg" alt="Gallery image 2">
+        <img src="000.jpg" alt="Gallery image 3">
+        <img src="0000.jpg" alt="Gallery image 4">
+        <img src="3.JPG" alt="Gallery image 5">
+        <img src="333.jpeg" alt="Gallery image 6">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  
+
+  <footer>
+    <div class="container center">
+      <div class="actions" style="justify-content:center">
+        <a class="btn" href="#home">Back to Top</a>
+        <a class="btn" href="https://github.com/naim79992" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/md-mehedi-hasan-naim-a592671a7/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="muted mt-8">© 2025 Mehedi Hasan Naim. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
