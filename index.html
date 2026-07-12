@@ -10,13 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b1020;           /* page background */
-      --surface:#0f1530;      /* cards/nav background */
-      --muted:#9aa4b2;        /* secondary text */
-      --text:#e6e9ef;         /* primary text */
-      --primary:#6366f1;      /* indigo */
-      --primary-2:#22d3ee;    /* cyan accent */
-      --accent:#fbbf24;       /* amber accent */
+      --bg:#0b1020;
+      --surface:#0f1530;
+      --muted:#9aa4b2;
+      --text:#e6e9ef;
+      --primary:#6366f1;
+      --primary-2:#22d3ee;
+      --accent:#fbbf24;
       --ring: rgba(99,102,241,.35);
       --radius: 16px;
       --shadow: 0 10px 30px rgba(2,6,23,.35);
@@ -35,13 +35,11 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
-    /* Layout */
     .container{max-width:var(--maxw);margin-inline:auto;padding:0 20px}
     section{padding:80px 0}
     .section-title{font-size:clamp(26px,2.5vw,36px);font-weight:700;margin:0 0 24px;color:#fff}
     .section-sub{color:var(--muted);margin-top:-6px;margin-bottom:28px}
 
-    /* Header */
     .nav{
       position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
       background: rgba(15,21,48,.75); border-bottom: 1px solid rgba(148,163,184,.12);
@@ -55,7 +53,6 @@
     .cta{padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-2));
          color:#0b1020;font-weight:700; box-shadow: var(--shadow); border: none}
 
-    /* Mobile menu */
     .hamb{display:none;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:8px 10px;background:transparent;color:#e7eaf6}
     @media (max-width:820px){
       .menu{display:none}
@@ -65,7 +62,6 @@
       .mobile.show{display:flex}
     }
 
-    /* Hero */
     #home{padding:110px 0 80px; position:relative; overflow:hidden}
     .hero{display:grid;grid-template-columns: 1.2fr .8fr;gap:28px;align-items:center}
     .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(34,211,238,.12); color:#c3f0ff;
@@ -77,25 +73,17 @@
     .btn.primary{border:none;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#0b1020;font-weight:700}
     .hero-card{background:linear-gradient(180deg,rgba(99,102,241,.12),rgba(99,102,241,.05)); border:1px solid rgba(148,163,184,.18);
                border-radius:var(--radius); padding:18px; box-shadow: var(--shadow)}
-     .hero-card img {
-      width: 100%;
-      height: auto;         /* aspect ratio ঠিক রাখবে */
-      object-fit: cover;    /* বক্স ভরবে */
-      border-radius: 5px;  /* নরম কোণা */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
+    .hero-card img{width:100%;height:auto;object-fit:cover;border-radius:5px;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
     @media (max-width:900px){.hero{grid-template-columns:1fr}}
 
-    /* About */
     .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center}
     .avatar{width:200px;height:200px;border-radius:50%;overflow:hidden;border:2px solid rgba(148,163,184,.25);
             box-shadow:0 12px 40px rgba(0,0,0,.35)}
     .about p{color:#d7dce7}
-    .socials{display:flex;gap:12px;margin-top:10px}
+    .socials{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(148,163,184,.2)}
     @media (max-width:900px){.about{grid-template-columns:1fr;justify-items:center;text-align:center}}
 
-    /* Grids */
     .grid{display:grid;gap:18px}
     .grid.cards{grid-template-columns: repeat(3, 1fr)}
     @media (max-width:1050px){.grid.cards{grid-template-columns:repeat(2,1fr)}}
@@ -110,40 +98,40 @@
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(99,102,241,.18); font-size:12px;color:#cbd5ff;border:1px solid rgba(99,102,241,.3)}
     .card-actions{display:flex;gap:10px;margin-top:10px}
 
-    /* Timeline (Achievements/Experience) */
+    /* Experience card */
+    .exp-card{background:linear-gradient(180deg,rgba(99,102,241,.10),rgba(99,102,241,.04));
+              border:1px solid rgba(148,163,184,.18);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
+    .exp-card h3{margin:0 0 4px;font-size:18px;color:#fff}
+    .exp-meta{color:var(--muted);font-size:14px;margin-bottom:12px}
+    .exp-card ul{margin:0;padding-left:20px;color:#cbd5e1;font-size:15px}
+    .exp-card ul li{margin-bottom:6px}
+    .tech-tag{display:inline-block;margin-top:10px;padding:5px 10px;border-radius:8px;background:rgba(34,211,238,.10);color:#c3f0ff;font-size:13px;border:1px solid rgba(34,211,238,.2)}
+
+    /* Rating chips */
+    .rating-row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+    .rating-chip{padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid}
+    .cf{background:rgba(251,191,36,.12);color:#fde68a;border-color:rgba(251,191,36,.3)}
+    .cc{background:rgba(99,102,241,.15);color:#c7d2fe;border-color:rgba(99,102,241,.3)}
+
     .timeline{position:relative;padding-left:24px}
     .timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--primary),transparent)}
     .t-item{position:relative;margin:0 0 14px;padding:14px 16px;border-radius:14px;background:rgba(99,102,241,.08); border:1px solid rgba(148,163,184,.18)}
     .t-item::before{content:"";position:absolute;left:-2px;top:18px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-2)); box-shadow:0 0 0 4px rgba(99,102,241,.15)}
 
-    /* Gallery */
     .gallery{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
     .gallery img{border-radius:14px;aspect-ratio: 4/3; object-fit:cover; transition:transform .25s ease}
     .gallery img:hover{transform:scale(1.02)}
     @media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:560px){.gallery{grid-template-columns:1fr}}
 
-    /* Contact */
-    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-    .form{background:linear-gradient(180deg,rgba(99,102,241,.12),rgba(99,102,241,.05));border:1px solid rgba(148,163,184,.18);
-           padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
-    .field input,.field textarea{background:#0b1020;border:1px solid rgba(148,163,184,.25);color:#e7eaf6;border-radius:12px;padding:12px 14px}
-    .field input:focus,.field textarea:focus{outline:none; box-shadow:0 0 0 4px var(--ring)}
-    .form button{margin-top:6px}
-    @media (max-width:900px){.contact{grid-template-columns:1fr}}
-
-    /* Footer */
     footer{padding:28px 0;border-top:1px solid rgba(148,163,184,.12); color:#cdd6e0}
-
-    /* Utilities */
     .muted{color:var(--muted)}
     .center{text-align:center}
     .mt-8{margin-top:32px}
-    .spacer{height:20px}
   </style>
 </head>
 <body>
+
   <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
@@ -151,38 +139,38 @@
       <nav class="menu" aria-label="Primary">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#achievements">Achievements</a>
-        <a href="#experiences">Experience</a>
+        <a href="#volunteer">Volunteer</a>
         <a href="#research">Research</a>
-        <a href="#contact">Contact</a>
         <a class="cta" href="Mehedi Hasan Naim_CV.pdf" target="_blank" rel="noopener">Download CV</a>
       </nav>
       <button class="hamb" aria-label="Toggle menu" onclick="document.querySelector('.mobile').classList.toggle('show')">☰</button>
     </div>
-    <!-- <div class="container mobile">
+    <div class="container mobile">
       <a href="#home" onclick="this.closest('.mobile').classList.remove('show')">Home</a>
       <a href="#about" onclick="this.closest('.mobile').classList.remove('show')">About</a>
+      <a href="#experience" onclick="this.closest('.mobile').classList.remove('show')">Experience</a>
       <a href="#projects" onclick="this.closest('.mobile').classList.remove('show')">Projects</a>
       <a href="#achievements" onclick="this.closest('.mobile').classList.remove('show')">Achievements</a>
-      <a href="#experiences" onclick="this.closest('.mobile').classList.remove('show')">Experience</a>
+      <a href="#volunteer" onclick="this.closest('.mobile').classList.remove('show')">Volunteer</a>
       <a href="#research" onclick="this.closest('.mobile').classList.remove('show')">Research</a>
-      <a href="#contact" onclick="this.closest('.mobile').classList.remove('show')">Contact</a>
-      <a class="cta" href="https://drive.google.com/file/d/1MPihtaYdIxHwFEyvSsSRZUEXjgtq0Aum/view?usp=sharing" target="_blank" rel="noopener">Download CV</a>
-    </div> -->
+      <a class="cta" href="Mehedi Hasan Naim_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
   </header>
 
   <!-- Hero -->
   <section id="home">
     <div class="container hero">
       <div>
-        <span class="badge">Competitive Programmer • Software Developer</span>
+        <span class="badge">Software Engineer • Competitive Programmer</span>
         <h1>Aspiring Software Engineer, eager to solve problems and build clean, efficient software.</h1>
-        <p>Strong background in Data Structures & Algorithms with hands‑on project work in Java/Spring Boot, Flutter, and web development. Passionate about building products that are fast, reliable, and delightful to use.</p>
+        <p>Software Engineer at Unisoft Systems Ltd with hands-on experience in Java/Spring Boot, banking systems, and distributed systems. Strong background in Data Structures & Algorithms with 2200+ problems solved.</p>
         <div class="actions">
-          <!-- <a class="btn primary" href="#contact">Hire Me</a> -->
           <a class="btn" href="https://github.com/naim79992" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/md-mehedi-hasan-naim-a592671a7/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://codeforces.com/profile/mh_naim_" target="_blank" rel="noopener">Codeforces</a>
         </div>
       </div>
       <div class="hero-card">
@@ -197,12 +185,33 @@
       <div class="avatar"><img src="Naim_v3.png" alt="Mehedi Hasan Naim" /></div>
       <div>
         <h2 class="section-title">About Me</h2>
-        <p>I am a passionate problem solver. With a strong foundation in competitive programming, I excel at writing efficient, readable code and designing algorithms. Team collaboration and contest experience have sharpened my ability to deliver under pressure. I’m eager to grow as a Software Engineer and contribute to impactful products.</p>
-        <div class="socials">
-          <a class="chip" href="mailto:mhnaim.cse@example.com" aria-label="Email">✉️ Email</a>
-          <a class="chip" href="https://github.com/naim79992" target="_blank" rel="noopener" aria-label="GitHub">🐙 GitHub</a>
-          <a class="chip" href="https://codeforces.com/profile/mh_naim_" target="_blank" rel="noopener" aria-label="Codeforces">⚡ Codeforces</a>
+        <p>I'm a Software Engineer at Unisoft Systems Ltd, working on Loan Origination Systems for banking clients using Java and Spring Boot. With a strong foundation in competitive programming, I excel at writing efficient, readable code and designing algorithms. I'm passionate about distributed systems, backend engineering, and building reliable software at scale.</p>
+        <div class="rating-row">
+          <span class="rating-chip cf">⚡ Codeforces: 1399 (Pupil)</span>
+          <span class="rating-chip cc">🍴 Codechef: 1425 (Div 4 Rank 12th in BD)</span>
         </div>
+        <div class="socials">
+          <a class="chip" href="mailto:mhnaim.cse@gmail.com" aria-label="Email">✉️ Email</a>
+          <a class="chip" href="https://github.com/naim79992" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a class="chip" href="https://codeforces.com/profile/mh_naim_" target="_blank" rel="noopener">⚡ Codeforces</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Experience -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="exp-card">
+        <h3>Software Engineer — Unisoft Systems Ltd</h3>
+        <div class="exp-meta">📍 Dhaka, Bangladesh &nbsp;|&nbsp; 🗓️ November 2025 – Present</div>
+        <ul>
+          <li>Actively contributing to the Loan Origination System (LOS) of multiple banking projects.</li>
+          <li>Diagnosed and resolved production bugs in live banking environment, ensuring system stability.</li>
+          <li>Developed features, fixed bugs, and improved application performance collaboratively.</li>
+        </ul>
+        <div class="tech-tag">Java 21 · Spring Boot 3 · JPA · MySQL · PostgreSQL · jQuery · Jasper Report · Docker · Git</div>
       </div>
     </div>
   </section>
@@ -211,82 +220,90 @@
   <section id="projects">
     <div class="container">
       <h2 class="section-title">Projects</h2>
-      <p class="section-sub">A selection of work across web, backend, and apps.</p>
+      <p class="section-sub">A selection of work across backend, distributed systems, and apps.</p>
       <div class="grid cards">
-       
-          <article class="card">
-          <div class="pill">Java 21 • Spring Boot 3 • Gemeni API • Bootstrap • JavaScript</div>
-          <h3> IntelliStudy</h3>
+
+        <article class="card">
+          <div class="pill">Java 21 • Spring Boot 3 • Gemini API • Redis • MySQL</div>
+          <h3>🧠 IntelliStudy</h3>
+          <p>AI-powered learning platform with Hybrid RAG pipeline (DuckDB + JGraphT) for document Q&A, summarization, Bangla translation, and dynamic MCQ generation powered by Gemini API.</p>
+          <div class="card-actions">
+            <a class="btn" href="https://github.com/naim79992/IntelliStudy" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pill">Java 21 • Spring Boot 3 • PostgreSQL • Spring Scheduler</div>
+          <h3>⚙️ Distributed Job Scheduler</h3>
+          <p>Fault-tolerant distributed job scheduling system. Implements Distributed Locking (CAS), Consistent Hashing, Leader Election with Split-brain detection, and Heartbeat & Failover across worker nodes.</p>
+          <div class="card-actions">
+            <a class="btn" href="https://github.com/naim79992/Distributed-Job-Scheduler" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pill">Java 21 • Spring Boot 3 • Spring Data JPA • MySQL • Bootstrap</div>
+          <h3>📝 QuizWhiz</h3>
           <p>Create and manage quizzes with random question delivery, scoring, and a simple admin flow.</p>
           <div class="card-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
             <a class="btn" href="https://github.com/naim79992/QuizWhiz" target="_blank" rel="noopener">Source</a>
           </div>
         </article>
 
         <article class="card">
-          <div class="pill">Java 21 • Spring Boot 3 • Spring Data JPA • Mysql • Bootstrap</div>
-          <h3>QuizWhiz</h3>
-          <p>Create and manage quizzes with random question delivery, scoring, and a simple admin flow.</p>
-          <div class="card-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn" href="https://github.com/naim79992/QuizWhiz" target="_blank" rel="noopener">Source</a>
-          </div>
-          </article>
-        <article class="card">
           <div class="pill">HTML • CSS • JS • PHP</div>
-          <h3>DevSpare</h3>
+          <h3>🛠️ DevSpare</h3>
           <p>Developer utilities and snippets hub with simple backend for storing/retrieving items.</p>
           <div class="card-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+            <a class="btn" href="#">Source</a>
           </div>
         </article>
+
         <article class="card">
           <div class="pill">HTML • CSS • JS</div>
-          <h3>FoodMonkey</h3>
+          <h3>🍔 FoodMonkey</h3>
           <p>Minimal food ordering front-end with category browsing and cart UI.</p>
           <div class="card-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+            <a class="btn" href="#">Source</a>
           </div>
         </article>
+
         <article class="card">
           <div class="pill">Flutter</div>
-          <h3>Weather App</h3>
+          <h3>🌤️ Weather App</h3>
           <p>City-based forecast viewer with clean UI components and API integration.</p>
           <div class="card-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+            <a class="btn" href="#">Source</a>
           </div>
         </article>
+
         <article class="card">
           <div class="pill">Flutter</div>
-          <h3>Quiz App</h3>
+          <h3>🎯 Quiz App</h3>
           <p>Randomized quizzes with scoring and result review, optimized for mobile.</p>
           <div class="card-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+            <a class="btn" href="#">Source</a>
           </div>
         </article>
+
         <article class="card">
           <div class="pill">Java</div>
-          <h3>Bank Management System</h3>
+          <h3>🏦 Bank Management System</h3>
           <p>Core banking features like accounts, transactions, and basic reporting.</p>
           <div class="card-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+            <a class="btn" href="#">Source</a>
           </div>
         </article>
+
         <article class="card">
           <div class="pill">C++</div>
-          <h3>Squid Game</h3>
+          <h3>🦑 Squid Game</h3>
           <p>Console/graphics-based mini game implementing state and scoring mechanics.</p>
           <div class="card-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+            <a class="btn" href="#">Source</a>
           </div>
         </article>
+
       </div>
     </div>
   </section>
@@ -295,31 +312,44 @@
   <section id="achievements">
     <div class="container">
       <h2 class="section-title">Achievements</h2>
+      <p class="section-sub">Competitive Programming & Academic</p>
+
+      <h3 style="color:#22d3ee;margin-bottom:12px">Individual</h3>
       <div class="timeline">
-        <div class="t-item"><strong>Take off Programming Contest (Fall 2021):</strong> Champion</div>
-        <div class="t-item"><strong>Unlock Algorithm Programming Contest (Fall 2022):</strong> Champion</div>
-        <div class="t-item"><strong>UAP IUCPC:</strong> 20th</div>
-        <div class="t-item"><strong>IUPC CUET:</strong> 72nd</div>
-        <div class="t-item"><strong>ICPC Dhaka Regional Contest 2024:</strong> Top 64%</div>
-        <div class="t-item"><strong>ICPC Dhaka Regional Preliminary 2022:</strong> 136th</div>
-        <div class="t-item"><strong>ICPC Dhaka Regional Preliminary 2023:</strong> 170th</div>
-        <div class="t-item"><strong>ICPC Dhaka Regional Preliminary 2024:</strong> 212th</div>
-        <div class="t-item"><strong>DRMC International Tech Carnival:</strong> 137th</div>
-        <div class="t-item"><strong>Problems Solved:</strong> 2100+ Algorithmic Problems</div>
-        <div class="t-item"><strong>CGPA:</strong> 3.84</div>
+        <div class="t-item"><strong>Top 1% (Champion)</strong> — Take Off Programming Contest, Fall 2021</div>
+        <div class="t-item"><strong>Codeforces:</strong> mh_naim_ — Max Rating <strong>1399 (Pupil)</strong> · Ranked 17th (Div 4), 20th (Div 2) in Bangladesh</div>
+        <div class="t-item"><strong>Codechef:</strong> mh_naim — Max Rating <strong>1425</strong> · Ranked 12th (Div 4) in Bangladesh</div>
+        <div class="t-item"><strong>2200+</strong> Data Structure & Algorithm problems solved across platforms</div>
+      </div>
+
+      <h3 style="color:#22d3ee;margin:24px 0 12px">Team Contests</h3>
+      <div class="timeline">
+        <div class="t-item"><strong>Top 1% (Champion)</strong> — DIU_Aim3rs, Unlock Algorithm Programming Contest, Fall 2022</div>
+        <div class="t-item"><strong>20th</strong> — DIU_Sedulous, UAP Inter University Collaborative Programming Contest 1.0</div>
+        <div class="t-item"><strong>Top 61%</strong> — DIU_3rror, ICPC Dhaka Regional Contest 2024</div>
+        <div class="t-item"><strong>72nd</strong> — DIU_Sedulous, CUET Inter University Programming Contest CodeStorm 1.0</div>
+        <div class="t-item"><strong>136th</strong> — ICPC Dhaka Regional Preliminary 2022</div>
+        <div class="t-item"><strong>170th</strong> — ICPC Dhaka Regional Preliminary 2023</div>
+        <div class="t-item"><strong>212th</strong> — ICPC Dhaka Regional Preliminary 2024</div>
+      </div>
+
+      <h3 style="color:#22d3ee;margin:24px 0 12px">Academic</h3>
+      <div class="timeline">
+        <div class="t-item"><strong>CGPA: 3.84</strong> / 4.00 — B.Sc. in CSE, Daffodil International University (2021–2025)</div>
       </div>
     </div>
   </section>
 
-  <!-- Experience -->
-  <section id="experiences">
+  <!-- Volunteer -->
+  <section id="volunteer">
     <div class="container">
-      <h2 class="section-title">Experience</h2>
+      <h2 class="section-title">Volunteer Experience</h2>
       <div class="timeline">
-        <div class="t-item"><strong>Associate Judging Director:</strong> Unlock The Algorithm (1000+ participants)</div>
-        <div class="t-item"><strong>Problem Setter & Judge:</strong> Takeoff Programming Contest & Unlock the Algorithm (2022–Now)</div>
+        <div class="t-item"><strong>Associate Judging Director</strong> — Unlock Algorithm Programming Contest Fall-2023 (1000+ participants)</div>
+        <div class="t-item"><strong>Problem Setter & Judge</strong> — Takeoff Programming Contest & Unlock the Algorithm (2022–Present) · Authored & Tested 10+ problems</div>
+        <div class="t-item"><strong>Problem Setter & Judge</strong> — Prompt Battle 2024 <em>(First-ever Prompt Engineering contest in Bangladesh)</em></div>
         <div class="t-item"><strong>ACM Task Force Executive</strong></div>
-        <div class="t-item"><strong>Prompt Battle 2024:</strong> Problem Setter</div>
+        <div class="t-item"><strong>Trainer</strong> — C-khoon (Trained C programming language)</div>
       </div>
     </div>
   </section>
@@ -338,7 +368,7 @@
         <article class="card">
           <div class="pill">ST-GNN • fMRI</div>
           <h3>Effect of Caffeine on Brain Network</h3>
-          <p>Analyzing caffeine’s impact on functional connectivity using spatio‑temporal graph neural networks.</p>
+          <p>Analyzing caffeine's impact on functional connectivity using spatio-temporal graph neural networks.</p>
           <div class="card-actions"><a class="btn" href="#">PDF</a></div>
         </article>
         <article class="card">
@@ -366,9 +396,6 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  
-
   <footer>
     <div class="container center">
       <div class="actions" style="justify-content:center">
@@ -376,8 +403,9 @@
         <a class="btn" href="https://github.com/naim79992" target="_blank" rel="noopener">GitHub</a>
         <a class="btn" href="https://www.linkedin.com/in/md-mehedi-hasan-naim-a592671a7/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <p class="muted mt-8">© 2025 Mehedi Hasan Naim. All rights reserved.</p>
+      <p class="muted mt-8">© 2026 Mehedi Hasan Naim. All rights reserved.</p>
     </div>
   </footer>
+
 </body>
 </html>
